@@ -2,7 +2,9 @@ console.log(process.env)
 export default {
     components: true,
     publicRuntimeConfig: {
-        googleKey: process.env.GOOGLE_KEY
+        googleKey: process.env.GOOGLE_KEY,
+        algoliaAppId: process.env.ALGOLIA_APP_ID,
+        algoliaApiKey: process.env.ALGOLIA_API_KEY,
     },
     head: {
         titleTemplate: 'Mastering Nuxt: %s',
@@ -16,7 +18,7 @@ export default {
             charset: 'utf-8',
         }]
     },
-    plugins: ['~/plugins/maps.client'],
+    plugins: ['~/plugins/dataApi', '~/plugins/maps.client'],
     router: {
         prefetchLinks: false,
     }

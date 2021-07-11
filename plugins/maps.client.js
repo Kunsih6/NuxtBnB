@@ -1,5 +1,4 @@
 export default function ({ $config }, inject) {
-    console.log($config.googleKey)
     let mapLoaded = false
     let mapWaiting = null
     
