@@ -1,4 +1,3 @@
-console.log(process.env)
 export default {
     components: true,
     publicRuntimeConfig: {
@@ -18,6 +17,9 @@ export default {
             charset: 'utf-8',
         }]
     },
+    buildModules: [
+        '@nuxtjs/tailwindcss'
+    ],
     plugins: ['~/plugins/dataApi', '~/plugins/maps.client'],
     router: {
         prefetchLinks: false,
