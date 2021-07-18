@@ -1,5 +1,17 @@
 export default {
+    build: {
+        extractCSS: true,
+        loaders: {
+            limit: 0,
+        }
+    },
+    buildModules: [
+        '@nuxtjs/tailwindcss'
+    ],
     components: true,
+    css: [
+        '~/assets/sass/app.scss'
+    ],
     publicRuntimeConfig: {
         googleKey: process.env.GOOGLE_KEY,
         algoliaAppId: process.env.ALGOLIA_APP_ID,
@@ -17,9 +29,6 @@ export default {
             charset: 'utf-8',
         }]
     },
-    buildModules: [
-        '@nuxtjs/tailwindcss'
-    ],
     plugins: ['~/plugins/dataApi', '~/plugins/maps.client'],
     router: {
         prefetchLinks: false,
