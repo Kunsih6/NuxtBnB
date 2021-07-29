@@ -13,11 +13,14 @@
                 </button>
             </div>
             <div class="app-user-menu">
-                <img src="/images/icons/house.svg" alt="">
-                <div class="name">
-                    Host
-                </div>
-                <img src="/images/user.jpg" class="avatar" alt="">
+                <template v-if="isLoggedIn">
+                    <img src="/images/icons/house.svg" alt="">
+                    <div class="name">
+                        Host
+                    </div>
+                    <img :src="user.profileUrl" alt="" class="avatar">
+                </template>
+                <div v-show="!isLoggedIn" id="googleButton" class="ml-8"></div>
             </div>
         </header>
         <nuxt />
@@ -25,7 +28,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
+    computed: {
+        ...mapState({
+            isLoggedIn: (state) => state.auth.isLoggedIn,
+            user: (state) => state.auth.user,
+        })
+    },
     mounted() {
         this.$maps.makeAutoComplete(this.$refs.citySearch)
     },

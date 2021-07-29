@@ -10,7 +10,7 @@ export default function ({ $config }, inject) {
 
     function addScript() {
         const script = document.createElement('script')
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${$config.googleKey}&libraries=places&callback=initGoogleMaps`,
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${$config.google.maps.key}&libraries=places&callback=initGoogleMaps`,
         script.async = true
         window.initGoogleMaps = initGoogleMaps
         document.head.appendChild(script)

@@ -12,10 +12,26 @@ export default {
     css: [
         '~/assets/sass/app.scss'
     ],
+    privateRuntimeConfig: {
+        algolia: {
+            appId: process.env.ALGOLIA_APP_ID,
+            key: process.env.ALGOLIA_PRIVATE_API_KEY
+        }
+    },
     publicRuntimeConfig: {
-        googleKey: process.env.GOOGLE_KEY,
-        algoliaAppId: process.env.ALGOLIA_APP_ID,
-        algoliaApiKey: process.env.ALGOLIA_API_KEY,
+        algolia: {
+            appId: process.env.ALGOLIA_APP_ID,
+            key: process.env.ALGOLIA_API_KEY
+        },
+        auth: {
+            cookieName: 'idToken',
+            clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
+        },
+        google: {
+            maps: {
+                key: process.env.GOOGLE_MAPS_KEY
+            }
+        },
     },
     head: {
         titleTemplate: 'Mastering Nuxt: %s',
@@ -29,7 +45,8 @@ export default {
             charset: 'utf-8',
         }]
     },
-    plugins: ['~/plugins/dataApi', '~/plugins/maps.client'],
+    modules: ['~/modules/auth', '~/modules/algolia'],
+    plugins: ['~/plugins/auth.client', '~/plugins/dataApi', '~/plugins/maps.client'],
     router: {
         prefetchLinks: false,
     }
