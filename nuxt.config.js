@@ -49,5 +49,5 @@ export default {
     plugins: ['~/plugins/auth.client', '~/plugins/dataApi', '~/plugins/maps.client'],
     router: {
         prefetchLinks: false,
-    }
+    },
 }
